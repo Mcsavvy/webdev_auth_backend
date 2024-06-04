@@ -43,7 +43,7 @@ def login():
     password = data["password"]
     user = db.session.query(User).filter(User.email == email).first()
     if user is None:
-        return jsonify({"msg": "Invalid credentials"}), 401
+        return jsonify({"msg": "Invalid email"}), 401
     if not check_password_hash(user.password, password):
         return jsonify({"msg": "Invalid credentials"}), 401
     access_token = create_access_token(identity=user.id)
