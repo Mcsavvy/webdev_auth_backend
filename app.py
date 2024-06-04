@@ -20,6 +20,8 @@ def register():
     last_name = data["last_name"]
     email = data["email"]
     password = data["password"]
+    if db.session.query(User).filter(User.email == email).first():
+        return jsonify({"msg": "User already exists"}), 400
     hashed_password = generate_password_hash(password)
     user = User(
         first_name=first_name,

@@ -11,5 +11,5 @@ class User(Base):
     id = Column(Integer, primary_key=True, autoincrement="auto")
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
-    email = Column(String(100), nullable=False)
+    email = Column(String(100), nullable=False, unique=True)
     password = Column(String(100), nullable=False)
