@@ -3,6 +3,7 @@ import config
 from models.user import User
 from extensions.database import db
 from extensions.auth import jwt
+from extensions.cors import cors
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import jwt_required, get_jwt_identity, create_access_token
 
@@ -11,6 +12,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = config.DATABASE_URL
 app.config["JWT_SECRET_KEY"] = config.JWT_SECRET
 db.init_app(app)
 jwt.init_app(app)
+cors.init_app(app)
 
 
 @app.route("/register", methods=["POST"])
